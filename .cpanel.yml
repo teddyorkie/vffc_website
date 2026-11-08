@@ -3,7 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/nhvffrv5/public_html/
     - /bin/cp *.html $DEPLOYPATH
-    - /bin/cp *.css $DEPLOYPATH
-    - /bin/cp *.js $DEPLOYPATH
-    - /bin/cp -r assets/js $DEPLOYPATH
-    - /bin/cp -r assets/css $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/assets
+    - /bin/cp -R assets/css $DEPLOYPATH/assets/
+    - /bin/cp -R assets/js $DEPLOYPATH/assets/
