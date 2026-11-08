@@ -779,10 +779,18 @@ VFFC.home = {
         "en": "Send enquiry",
         "vi": "Gửi yêu cầu"
       },
+      "sending": {
+        "en": "Sending…",
+        "vi": "Đang gửi…"
+      },
       "sent": {
-  "en": "Your email app is opening with your enquiry addressed to info@vffc.vn. If nothing happens, please email us directly.",
-  "vi": "Ứng dụng email đang mở với yêu cầu gửi tới info@vffc.vn. Nếu không thấy, quý vị vui lòng gửi email trực tiếp cho chúng tôi."
-}
+        "en": "Thank you — your enquiry has been sent. We will get back to you shortly.",
+        "vi": "Cảm ơn quý vị — yêu cầu đã được gửi. Chúng tôi sẽ phản hồi trong thời gian sớm nhất."
+      },
+      "error": {
+        "en": "Could not send your enquiry right now. Please try again or email us directly at info@vffc.vn.",
+        "vi": "Chưa thể gửi yêu cầu lúc này. Quý vị vui lòng thử lại hoặc gửi email trực tiếp tới info@vffc.vn."
+      }
     }
   }
 };

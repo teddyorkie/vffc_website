@@ -150,7 +150,7 @@
       '<span class="font-semibold">' + tx(V.site.contact.address) + '</span><span class="text-sm text-mist">' + tx(V.site.contact.hours) + '</span></span></div>';
 
     var options = function (list) { return each(list, function (o) { return '<option>' + tx(o) + '</option>'; }); };
-    var form = '<form id="contact-form" novalidate class="flex flex-col gap-4 bg-paper p-6 text-ink sm:p-8">' +
+    var form = '<form id="contact-form" action="https://formspree.io/f/mjyydlao" method="POST" novalidate class="flex flex-col gap-4 bg-paper p-6 text-ink sm:p-8">' +
       '<h3 class="font-display text-2xl font-extrabold text-navy">' + tx(f.title) + '</h3>' +
       '<div class="grid gap-4 sm:grid-cols-2">' +
       field(f.name, '<input name="name" type="text" autocomplete="name" required class="input">') +
@@ -174,26 +174,43 @@
       form + '</div></div></section>';
   }
 
-  /** Static site: compose an email to the company inbox with the form contents. */
+  /** Submit enquiry form to Formspree endpoint via AJAX while keeping current design. */
   function bindForm(root) {
     var form = root.querySelector('#contact-form');
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      var data = new FormData(form);
       var f = d.contact.form;
-      var lines = [
-        [f.name, data.get('name')], [f.company, data.get('company')], [f.email, data.get('email')],
-        [f.phone, data.get('phone')], [f.country, data.get('country')], [f.channel, data.get('channel')],
-        [f.interest, data.get('interest')]
-      ].map(function (pair) { return V.i18n.t(pair[0]) + ': ' + (pair[1] || '-'); });
-      var body = lines.join('\n') + '\n\n' + (data.get('message') || '');
-      var subject = 'VFFC enquiry — ' + (data.get('interest') || '');
-      window.location.href = 'mailto:' + V.site.contact.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var btn = form.querySelector('button[type="submit"]');
       var status = root.querySelector('#form-status');
-      status.textContent = V.i18n.t(f.sent);
-      status.classList.remove('hidden');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = V.i18n.t(f.sending || f.submit);
+      }
+      status.classList.add('hidden');
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          status.textContent = V.i18n.t(f.sent);
+          status.className = 'text-sm text-leaf';
+        } else {
+          status.textContent = V.i18n.t(f.error);
+          status.className = 'text-sm text-brown';
+        }
+      }).catch(function () {
+        status.textContent = V.i18n.t(f.error);
+        status.className = 'text-sm text-brown';
+      }).then(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = V.i18n.t(f.submit);
+        }
+      });
     });
   }
 
