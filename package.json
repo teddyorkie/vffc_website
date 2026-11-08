@@ -1,0 +1,14 @@
+{
+  "name": "vffc-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VFFC.vn — bilingual (EN/VI) static website: consulting services, investment projects, agri-food export catalogues.",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch",
+    "serve": "npx --yes serve ."
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

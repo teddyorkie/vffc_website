@@ -1,0 +1,51 @@
+/*
+ * Tailwind entry file. Build with:  npm run build   (or  npm run watch  while editing)
+ * Output: assets/css/styles.css  — the only stylesheet the pages load.
+ * Repeated patterns live here as component classes so pages stay short and consistent.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper font-sans leading-relaxed text-ink antialiased; }
+  a { @apply text-navy; }
+  a:hover { @apply text-[#0A1C30]; }
+  :focus-visible { outline: 3px solid theme('colors.gold.DEFAULT'); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-5 sm:px-8; }
+
+  /* Typography */
+  .eyebrow { @apply text-[13px] font-semibold uppercase tracking-[0.2em]; }
+  .h1 { @apply font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.2rem]; }
+  .h2 { @apply font-display text-3xl font-extrabold leading-tight text-navy sm:text-4xl; }
+  .subhead { @apply text-[15px] font-semibold uppercase tracking-wider; }
+
+  /* Buttons — all at least 44px tall for touch */
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center px-5 py-2.5 font-semibold no-underline transition-colors; }
+  .btn-gold { @apply btn bg-gold text-navy hover:bg-gold-600 hover:text-navy; }
+  .btn-navy { @apply btn bg-navy text-paper hover:bg-navy-700 hover:text-paper; }
+  .btn-outline-light { @apply btn border border-paper text-paper hover:bg-white/10 hover:text-paper; }
+  .link-gold { @apply text-gold underline-offset-4 hover:text-gold hover:underline; }
+
+  /* Surfaces */
+  .card { @apply border border-sand bg-white; }
+  .chip { @apply px-2.5 py-1 text-[13px] font-semibold; }
+
+  /* Lists and tables */
+  .list-bullets { @apply list-disc space-y-2 pl-5; }
+  .spec-table { @apply grid grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] border-t border-sand text-[15px] sm:grid-cols-[minmax(0,9.5rem)_minmax(0,1fr)]; }
+  .spec-table dt { @apply border-b border-sand py-2.5 pr-3 text-[13px] font-semibold uppercase tracking-wide text-muted; }
+  .spec-table dd { @apply m-0 border-b border-sand py-2.5; }
+
+  /* Form fields */
+  .input { @apply w-full border border-[#B9B2A3] bg-white px-3 py-3 font-normal text-ink focus:border-navy; }
+}
