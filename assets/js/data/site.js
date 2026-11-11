@@ -8,6 +8,8 @@ VFFC.site = {
   "brand": {
     "name": "VFFC",
     "full": "Vietnam France Financial & Construction Consulting",
+    "legalName": "Công ty TNHH Tư vấn Tài chính & Xây dựng Việt Pháp",
+    "founded": 2019,
     "domain": "vffc.vn"
   },
   "contact": {
@@ -31,6 +33,14 @@ VFFC.site = {
     }
   },
   "nav": [
+    {
+      "id": "about",
+      "href": "about.html",
+      "label": {
+        "en": "About us",
+        "vi": "Về chúng tôi"
+      }
+    },
     {
       "id": "consulting",
       "href": "index.html#consulting",

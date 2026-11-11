@@ -10,6 +10,10 @@
 @layer base {
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body { @apply bg-paper font-sans leading-relaxed text-ink antialiased; }
+  /* Body paragraphs are justified (straight right edge) */
+  p { text-align: justify; text-justify: inter-word; }
+  /* Body text is justified so both margins are straight */
+  p, li, dd { text-align: justify; hyphens: auto; }
   a { @apply text-navy; }
   a:hover { @apply text-[#0A1C30]; }
   :focus-visible { outline: 3px solid theme('colors.gold.DEFAULT'); outline-offset: 2px; }

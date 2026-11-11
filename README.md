@@ -32,6 +32,7 @@ npm run watch          # rebuild automatically while editing
 
 ```
 index.html                 Home: hero, why VFFC, consulting A1–A4, trade overview, contact
+about.html                 About us: history, direction, way of working, leadership team
 projects.html              A4 · Investment projects (filterable)
 processed-foods.html       B1 · Processed foods & spices catalogue
 frozen-foods.html          B2 · Frozen seafood, foods & fruit catalogue
@@ -44,6 +45,7 @@ assets/
     data/                  ALL TEXT AND CONTENT lives here (EN + VI)
       site.js              Brand, contact details, navigation, shared labels
       home.js              Home page content
+      about.js             About us content (history, team)
       projects.js          Investment projects
       catalogue-processed.js
       catalogue-frozen.js
@@ -54,6 +56,7 @@ assets/
       app.js               Mounts a page and re-renders on language change
     pages/                 One small script per page type
       home.js
+      about.js
       projects.js
       catalogue.js         Shared by every product catalogue
 src/input.css              Tailwind source: theme layers + component classes
@@ -71,6 +74,8 @@ tailwind.config.js         Colours, fonts, content paths
 ## Common edits
 
 **Contact details** — `assets/js/data/site.js` → `contact`.
+
+**Team members** — `assets/js/data/about.js` → `team.members`. Add a `role`, a `bio` ({ en, vi }) and a `photo` path (e.g. `assets/img/team/le-dinh-quang.jpg`, portrait, 4:3 or taller). Initials are shown until a photo is set.
 
 **Add a product** — append an object to a group's `items` in the catalogue data file, and add a photo `assets/img/products/<id>.jpg`:
 
@@ -98,7 +103,7 @@ tailwind.config.js         Colours, fonts, content paths
 
 ## Before going live
 
-- **Contact form**: on this static site the form opens the visitor's email app addressed to info@vffc.vn. To receive submissions directly, point the form to a form service (Formspree, Basin, Getform…) or your own server endpoint in `assets/js/pages/home.js` → `bindForm`.
+- **Contact form**: the enquiry form on the home page submits directly via AJAX (`fetch`) to Formspree (`https://formspree.io/f/mjyydlao`) in both English and Vietnamese. To change the endpoint or behaviour, edit `action` and `bindForm` in `assets/js/pages/home.js` (status messages are in `assets/js/data/home.js` → `contact.form`).
 - **Images** are illustrative (product photos and project renderings). Replace them with photos from suppliers or developers when available, keeping the same file names.
 - **SEO**: page text is rendered by JavaScript. Google indexes it, but if SEO becomes a priority, the same data files can feed a static site generator (e.g. Eleventy) to pre-render HTML.
 - Fonts load from Google Fonts (Archivo, Inter). Without internet access the system font is used.

@@ -59,7 +59,7 @@
     return '<div class="container-site flex flex-col gap-6 py-10 text-sm text-mist md:flex-row md:items-start md:justify-between">' +
       '<div class="flex flex-col gap-2">' +
       '<span class="font-display text-lg font-extrabold tracking-[0.15em] text-paper">' + ui.escape(b.name) + '</span>' +
-      '<span>' + ui.escape(b.full) + '</span>' +
+      '<span>' + ui.escape(b.legalName || b.full) + '</span>' +
       '<span>' + ui.tx(c.addressShort) + '</span>' +
       '<span><a class="link-gold" href="' + ui.escape(c.phoneHref) + '">' + ui.escape(c.phone) + '</a> · ' +
       '<a class="link-gold" href="mailto:' + ui.escape(c.email) + '">' + ui.escape(c.email) + '</a></span>' +
