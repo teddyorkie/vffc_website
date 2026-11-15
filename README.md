@@ -1,10 +1,10 @@
-# VFFC.vn — Website (EN / VI)
+# VFFC.vn — Website (EN / VI / FR / ZH)
 
-Static, bilingual website for **VFFC — Vietnam France Financial & Construction Consulting**: consulting services, investment projects and food export catalogues.
+Static, multilingual website for **VFFC — Vietnam France Financial & Construction Consulting**: consulting services, investment projects and food export catalogues.
 
 - Plain HTML + Tailwind CSS + vanilla JavaScript. No framework, no build needed to run.
 - Responsive: mobile (≥ 360 px), tablet and desktop. Desktop navigation from 1280 px, a menu button below.
-- Language switch (EN / VI) on every page. The chosen language is remembered between pages.
+- Language switch (EN / VI / FR / ZH) on every page. The chosen language is remembered between pages.
 
 ## Run it
 

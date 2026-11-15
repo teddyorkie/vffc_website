@@ -32,7 +32,7 @@
     return '<div role="group" aria-label="' + ui.tx(V.site.ui.language) + '" class="flex border border-navy-500">' +
       ui.each(V.i18n.LANGS, function (code) {
         var on = code === V.i18n.lang;
-        return '<button type="button" data-lang="' + code + '" aria-pressed="' + on + '" class="min-h-[44px] min-w-[48px] px-2.5 text-[13px] font-semibold uppercase ' +
+        return '<button type="button" data-lang="' + code + '" aria-pressed="' + on + '" class="min-h-[44px] px-2.5 text-[13px] font-semibold uppercase ' +
           (on ? 'bg-gold text-navy' : 'text-paper hover:bg-navy-700') + '">' + code + '</button>';
       }) + '</div>';
   }

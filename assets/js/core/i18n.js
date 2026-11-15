@@ -1,6 +1,6 @@
 /**
  * i18n — language state shared by every page.
- * - Content objects are { en, vi }; plain strings are language-neutral.
+ * - Content objects are { en, vi, fr, zh }; plain strings are language-neutral.
  * - The chosen language is remembered in localStorage and survives page changes.
  * - Changing language fires a "vffc:lang" event; the app re-renders on it.
  */
@@ -8,7 +8,7 @@
   'use strict';
 
   var STORAGE_KEY = 'vffc-lang';
-  var LANGS = ['en', 'vi'];
+  var LANGS = ['en', 'vi', 'fr', 'zh'];
 
   function initialLang() {
     try {
@@ -16,7 +16,10 @@
       if (LANGS.indexOf(saved) !== -1) return saved;
     } catch (e) { /* storage unavailable: fall through */ }
     var browser = (navigator.language || '').toLowerCase();
-    return browser.indexOf('vi') === 0 ? 'vi' : 'en';
+    if (browser.indexOf('vi') === 0) return 'vi';
+    if (browser.indexOf('fr') === 0) return 'fr';
+    if (browser.indexOf('zh') === 0) return 'zh';
+    return 'en';
   }
 
   var lang = initialLang();
@@ -35,7 +38,7 @@
       document.dispatchEvent(new CustomEvent('vffc:lang', { detail: next }));
     },
 
-    /** Resolve a bilingual value to a plain string in the current language. */
+    /** Resolve a multilingual value to a plain string in the current language. */
     t: function (value) {
       if (value === null || value === undefined) return '';
       if (typeof value === 'object' && !Array.isArray(value)) {

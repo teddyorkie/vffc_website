@@ -133,6 +133,6 @@
     render: function () {
       return hero() + who() + story() + differences() + process() + whatWeDo() + leadership() + cta();
     },
-    pager: { next: { href: 'index.html#consulting', label: { en: 'Our services →', vi: 'Dịch vụ của chúng tôi →' } } }
+    pager: { next: { href: 'index.html#consulting', label: { en: 'Our services →', vi: 'Dịch vụ của chúng tôi →', fr: 'Nos services →', zh: '我们的服务 →' } } }
   });
 })(window.VFFC);
